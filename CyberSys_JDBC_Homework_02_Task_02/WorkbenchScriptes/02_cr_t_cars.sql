@@ -1,0 +1,6 @@
+CREATE TABLE cars
+(
+    id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    model VARCHAR(20) NOT NULL,
+    model_year INT(11) NOT NULL
+);

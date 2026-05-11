@@ -1,17 +1,42 @@
 package CyberSys;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import CyberSys.dao.DAOFactory;
+import CyberSys.dao.ICarDAO;
+import CyberSys.dao.IDAOFactory;
+import CyberSys.entity.Car;
+
+import java.util.List;
+
+// !!! Перед запуском програми необхідно виконати скрипти з папки WorkBench_Scripts !!!
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        IDAOFactory factory = DAOFactory.getInstance();
+        ICarDAO carDAO = factory.getCarDAO();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        /*
+        Car car = new Car();
+        car.setModel("100");
+        car.setModelYear(2000);
+        carDAO.insert(car);
+
+        car = new Car();
+        car.setModel("200");
+        car.setModelYear(2005);
+        carDAO.insert(car);
+
+        car = new Car();
+        car.setModel("300");
+        car.setModelYear(2011);
+        carDAO.insert(car);
+        */
+        
+        System.out.println();
+
+        List<Car> cars = carDAO.findAll();
+        for (Car current : cars) {
+            System.out.println(car);
         }
+
+
     }
 }
