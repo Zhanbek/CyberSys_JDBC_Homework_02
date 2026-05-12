@@ -39,7 +39,7 @@ public class CarJDBCDao implements ICarDAO {
 
     public Car findById(int id)  {
         Car car = new Car();
-        String query = "SELECT Id, Model, Model_Year FROM Car WHERE Id = ?";
+        String query = "SELECT Id, Model, Model_Year FROM Cars WHERE Id = ?";
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setInt(1, id);
@@ -58,7 +58,7 @@ public class CarJDBCDao implements ICarDAO {
 
     @Override
     public boolean update(Car car) {
-        String query = "UPDATE Car SET Model = ?, Model_Year = ? WHERE Id = ?";
+        String query = "UPDATE Cars SET Model = ?, Model_Year = ? WHERE Id = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
@@ -78,7 +78,7 @@ public class CarJDBCDao implements ICarDAO {
 
     @Override
     public boolean deleteById(int id) {
-        String query = "DELETE FROM Car WHERE Id = ?";
+        String query = "DELETE FROM Cars WHERE Id = ?";
 
         try (Connection connection = getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {

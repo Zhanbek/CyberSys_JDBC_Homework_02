@@ -32,11 +32,42 @@ public class Main {
         
         System.out.println();
 
+        int maxId = 1;
         List<Car> cars = carDAO.findAll();
         for (Car current : cars) {
-            System.out.println(car);
+            System.out.println(current);
+            maxId = current.getId();
         }
 
+        System.out.println();
+        System.out.println("Car with id = " + maxId + " has been found:");
+        Car carWithMaxId = carDAO.findById(maxId);
+        System.out.println(carWithMaxId);
 
+        System.out.println();
+        carWithMaxId.setModelYear(2012);
+        boolean result = carDAO.update(carWithMaxId);
+        if (result) {
+            System.out.println("Car with id = " + maxId + " has been updated:");
+            System.out.println(carWithMaxId);
+        } else {
+            System.out.println("Car with id = " + maxId + " has`t been updated:");
+            System.out.println(carWithMaxId);
+        }
+
+        System.out.println();
+        result = carDAO.deleteById(maxId);
+        if (result) {
+            System.out.println("Car with id = " + maxId + " has been deleted");
+
+        } else {
+            System.out.println("Car with id = " + maxId + " has`t been deleted:");
+        }
+
+        System.out.println();
+        cars = carDAO.findAll();
+        for (Car current : cars) {
+            System.out.println(current);
+        }
     }
 }
